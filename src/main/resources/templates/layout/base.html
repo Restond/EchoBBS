@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head(title)">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title th:text="${title}">EchoBBS</title>
+
+        <meta th:if="${_csrf != null}" name="_csrf" th:content="${_csrf.token}">
+        <meta th:if="${_csrf != null}" name="_csrf_header" th:content="${_csrf.headerName}">
+
+        <script th:src="@{/js/csrf.js}" defer></script>
+    </head>
+    <body>
+        <header th:fragment="header">
+            <h1><a th:href="@{/}">EchoBBS</a></h1>
+            <div class="nav">
+                <form action="/search" method="get" style="display:inline-block;margin-right:20px;">
+                    <label>
+                        <input type="text" name="q" placeholder="搜索..."
+                               style="padding:4px 8px;border:1px solid #d1d5da;border-radius:4px;">
+                    </label>
+                </form>
+                <a href="/">首页</a>
+                <a href="/boards">板块</a>
+            </div>
+            <hr>
+            <script>
+                fetch('/api/notifications/unread-count')
+                    .then(r => r.json())
+                    .then(data => {
+                        const count = data.data;
+                        if (count > 0) {
+                            document.getElementById('nav-notification').innerHTML =
+                                '<a href="/notifications">通知 <b>' + count + '</b></a>';
+                        } else {
+                            document.getElementById('nav-notification').innerHTML =
+                                '<a href="/notifications">通知</a>';
+                        }
+                    });
+            </script>
+        </header>
+        <footer th:fragment="footer">
+            <hr>
+            <p>EchoBBS</p>
+        </footer>
+    </body>
+</html>

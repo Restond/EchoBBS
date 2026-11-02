@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/base :: head('403 - 无权访问')}"><title>403</title></head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f6f8fa;">
+<div style="max-width: 600px; margin: 100px auto; padding: 40px; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center;">
+    <div style="font-size: 72px; margin-bottom: 20px;">🔒</div>
+    <h1 style="font-size: 32px; color: #24292e; margin: 0 0 16px 0;">403 - 无权访问</h1>
+    <p style="font-size: 16px; color: #586069; margin: 0 0 32px 0;">
+        您没有权限访问此资源。
+    </p>
+    <div style="display: flex; gap: 16px; justify-content: center;">
+        <a href="javascript:history.back()" style="display: inline-block; padding: 12px 32px; background: #6c757d; color: white; text-decoration: none; border-radius: 6px; font-size: 16px; font-weight: 600;">
+            返回上一页
+        </a>
+        <a href="/" style="display: inline-block; padding: 12px 32px; background: #007bff; color: white; text-decoration: none; border-radius: 6px; font-size: 16px; font-weight: 600;">
+            返回首页
+        </a>
+    </div>
+</div>
+</body>
+</html>
